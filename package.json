@@ -1,1 +1,40 @@
-{     "devDependencies": {         "notie": "*",         "electron-lite": "kaizhu256/node-electron-lite#alpha",         "utility2": "kaizhu256/node-utility2#alpha"     },     "name":"npmtest-notie",     "homepage": "https://github.com/npmtest/node-npmtest-notie",     "repository": {         "type": "git",         "url": "https://github.com/npmtest/node-npmtest-notie.git"     },     "scripts": {         "build-ci": "utility2 shReadmeTest build_ci.sh"     },     "version": "0.0.1" }
+{
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "description": "#### test coverage for  [notie (v4.3.0)](https://jaredreich.com/projects/notie)  [![npm package](https://img.shields.io/npm/v/npmtest-notie.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-notie) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-notie.svg)](https://travis-ci.org/npmtest/node-npmtest-notie)",
+    "devDependencies": {
+        "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "notie": "*",
+        "utility2": "kaizhu256/node-utility2#alpha"
+    },
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmtest/node-npmtest-notie",
+    "keywords": [
+        "coverage",
+        "test",
+        "notie"
+    ],
+    "license": "MIT",
+    "main": "lib.npmtest_notie.js",
+    "name": "npmtest-notie",
+    "nameAlias": "npmtest_notie",
+    "nameOriginal": "npmtest-notie",
+    "os": [
+        "darwin",
+        "linux"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/npmtest/node-npmtest-notie.git"
+    },
+    "scripts": {
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "npm install \"kaizhu256/node-utility2#alpha\" && utility2 shDeployHeroku",
+        "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+        "start": "PORT=${PORT:-8080} utility2 start test.js",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
+    },
+    "version": "0.0.1"
+}
