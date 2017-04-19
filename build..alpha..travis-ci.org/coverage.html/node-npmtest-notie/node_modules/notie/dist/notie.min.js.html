@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-notie/node_modules/notie/dist/notie.min.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-notie">npmtest-notie (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-notie/node_modules/notie/dist/notie.min.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">14.36% <small>(29 / 202)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">7.45% <small>(19 / 255)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">14.89% <small>(14 / 94)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">100% <small>(1 / 1)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-notie/node_modules/notie/dist/</a> &#187; notie.min.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2</td><td class="line-coverage"><span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">!function(e,t){"object"==typeof exports&amp;&amp;"object"==typeof module?module.exports=t():<span class="branch-1 cbranch-no" title="branch not covered" >"function"==typeof define&amp;&amp;define.amd?define([],t):"object"==typeof exports?exports.notie=t():e.notie=t()}</span>(this,function(){return function(e){function t(s){<span class="missing-if-branch" title="if path not taken" >I</span>if(n[s])<span class="cstat-no" title="statement not covered" >return n[s].exports;v</span>ar a=n[s]={i:s,l:!1,exports:{}};return e[s].call(a.exports,a,a.exports,t),a.l=!0,a.exports}var n={};return t.m=e,t.c=n,t.i=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>return e}</span>,t.d=<span class="fstat-no" title="function not covered" >function(e,n,s){<span class="cstat-no" title="statement not covered" ></span>t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:s})}</span>,t.n=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>var n=e&amp;&amp;e.__esModule?<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return e.default}</span>:<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return e}</span>;<span class="cstat-no" title="statement not covered" >r</span>eturn t.d(n,"a",n),n}</span>,t.o=<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>return Object.prototype.hasOwnProperty.call(e,t)}</span>,t.p="",t(t.s=1)}([function(e,t){e.exports=function(e){return e.webpackPolyfill||(e.deprecate=<span class="fstat-no" title="function not covered" >function(){</span>},e.paths=[],e.children||(e.children=[]),Object.defineProperty(e,"loaded",{enumerable:!0,get:<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return e.l}</span>}),Object.defineProperty(e,"id",{enumerable:!0,get:<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return e.i}</span>}),e.webpackPolyfill=1),e}},function(e,t,n){"use strict";(function(e){var n,s,a,i="function"==typeof Symbol&amp;&amp;"symbol"==typeof Symbol.iterator?function(e){return typeof e}:<span class="fstat-no" title="function not covered" ><span class="branch-1 cbranch-no" title="branch not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>return e&amp;&amp;"function"==typeof Symbol&amp;&amp;e.constructor===Symbol&amp;&amp;e!==Symbol.prototype?"symbol":typeof e}</span>;</span>!function(c,o){"object"===i(t)&amp;&amp;"object"===i(e)?e.exports=o():(<span class="branch-1 cbranch-no" title="branch not covered" >s=[],n=o,a="function"==typeof n?n.apply(t,s):n,!(void 0!==a&amp;&amp;(e.exports=a)))</span>}(void 0,function(){return function(e){function t(s){<span class="missing-if-branch" title="if path not taken" >I</span>if(n[s])<span class="cstat-no" title="statement not covered" >return n[s].exports;v</span>ar a=n[s]={i:s,l:!1,exports:{}};return e[s].call(a.exports,a,a.exports,t),a.l=!0,a.exports}var n={};return t.m=e,t.c=n,t.i=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>return e}</span>,t.d=<span class="fstat-no" title="function not covered" >function(e,n,s){<span class="cstat-no" title="statement not covered" ></span>t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:s})}</span>,t.n=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>var n=e&amp;&amp;e.__esModule?<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return e.default}</span>:<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return e}</span>;<span class="cstat-no" title="statement not covered" >r</span>eturn t.d(n,"a",n),n}</span>,t.o=<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>return Object.prototype.hasOwnProperty.call(e,t)}</span>,t.p="",t(t.s=0)}([function(e,t,n){<span class="fstat-no" title="function not covered" >function s(e,t){<span class="cstat-no" title="statement not covered" ></span>var n={};<span class="cstat-no" title="statement not covered" >f</span>or(var s in e)<span class="cstat-no" title="statement not covered" >t.indexOf(s)&gt;=0||Object.prototype.hasOwnProperty.call(e,s)&amp;&amp;(n[s]=e[s]);<span class="cstat-no" title="statement not covered" >r</span></span>eturn n}</span>Object.defineProperty(t,"__esModule",{value:!0});var a="function"==typeof Symbol&amp;&amp;"symbol"===i(Symbol.iterator)?<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>return"undefined"==typeof e?"undefined":i(e)}</span>:<span class="fstat-no" title="function not covered" ><span class="branch-1 cbranch-no" title="branch not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>return e&amp;&amp;"function"==typeof Symbol&amp;&amp;e.constructor===Symbol&amp;&amp;e!==Symbol.prototype?"symbol":"undefined"==typeof e?"undefined":i(e)}</span>,</span>c=Object.assign||<span class="fstat-no" title="function not covered" ><span class="branch-1 cbranch-no" title="branch not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>for(var t=1;t&lt;arguments.length;t++){<span class="cstat-no" title="statement not covered" >var n=arguments[t];<span class="cstat-no" title="statement not covered" >f</span>or(var s in n)<span class="cstat-no" title="statement not covered" >Object.prototype.hasOwnProperty.call(n,s)&amp;&amp;(e[s]=n[s])}<span class="cstat-no" title="statement not covered" ></span></span>r</span>eturn e}</span>,</span>o={top:"top",bottom:"bottom"},r={alertTime:3,dateMonths:["January","February","March","April","May","June","July","August","September","October","November","December"],overlayClickDismiss:!0,overlayOpacity:.75,transitionCurve:"ease",transitionDuration:.3,transitionSelector:"all",classes:{container:"notie-container",textbox:"notie-textbox",textboxInner:"notie-textbox-inner",button:"notie-button",element:"notie-element",elementHalf:"notie-element-half",elementThird:"notie-element-third",overlay:"notie-overlay",backgroundSuccess:"notie-background-success",backgroundWarning:"notie-background-warning",backgroundError:"notie-background-error",backgroundInfo:"notie-background-info",backgroundNeutral:"notie-background-neutral",backgroundOverlay:"notie-background-overlay",alert:"notie-alert",inputField:"notie-input-field",selectChoiceRepeated:"notie-select-choice-repeated",dateSelectorInner:"notie-date-selector-inner",dateSelectorUp:"notie-date-selector-up"},ids:{overlay:"notie-overlay"},positions:{alert:o.top,force:o.top,confirm:o.top,input:o.top,select:o.bottom,date:o.top}},l=t.setOptions=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>r=c({},r,e,{classes:c({},r.classes,e.classes),ids:c({},r.ids,e.ids),positions:c({},r.positions,e.positions)})}</span>,d=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return new Promise(<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>return setTimeout(e,0)}</span>)}</span>,u=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>return new Promise(<span class="fstat-no" title="function not covered" >function(t){<span class="cstat-no" title="statement not covered" ></span>return setTimeout(t,1e3*e)}</span>)}</span>,p=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>document.activeElement&amp;&amp;document.activeElement.blur()}</span>,f=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>var e="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>var t=16*Math.random()|0,n="x"===e?t:3&amp;t|8;<span class="cstat-no" title="statement not covered" >r</span>eturn n.toString(16)}</span>);<span class="cstat-no" title="statement not covered" >r</span>eturn"notie-"+e}</span>,m={1:r.classes.backgroundSuccess,success:r.classes.backgroundSuccess,2:r.classes.backgroundWarning,warning:r.classes.backgroundWarning,3:r.classes.backgroundError,error:r.classes.backgroundError,4:r.classes.backgroundInfo,info:r.classes.backgroundInfo,5:r.classes.backgroundNeutral,neutral:r.classes.backgroundNeutral},v=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return r.transitionSelector+" "+r.transitionDuration+"s "+r.transitionCurve}</span>,b=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>return 13===e.keyCode}</span>,x=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>return 27===e.keyCode}</span>,y=<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>e.classList.add(r.classes.container),e.style[t]="-10000px",document.body.appendChild(e),e.style[t]="-"+e.offsetHeight+"px",e.listener&amp;&amp;window.addEventListener("keydown",e.listener),d().then(<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>e.style.transition=v(),e.style[t]=0}</span>)}</span>,L=<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n=document.getElementById(e);<span class="cstat-no" title="statement not covered" >n</span>&amp;&amp;(n.style[t]="-"+n.offsetHeight+"px",n.listener&amp;&amp;window.removeEventListener("keydown",n.listener),u(r.transitionDuration).then(<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>n.parentNode&amp;&amp;n.parentNode.removeChild(n)}</span>))}</span>,g=<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n=document.createElement("div");<span class="cstat-no" title="statement not covered" >n</span>.id=r.ids.overlay,n.classList.add(r.classes.overlay),n.classList.add(r.classes.backgroundOverlay),n.style.opacity=0,e&amp;&amp;r.overlayClickDismiss&amp;&amp;(n.onclick=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>L(e.id,t),h()}</span>),document.body.appendChild(n),d().then(<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>n.style.transition=v(),n.style.opacity=r.overlayOpacity}</span>)}</span>,h=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>var e=document.getElementById(r.ids.overlay);<span class="cstat-no" title="statement not covered" >e</span>.style.opacity=0,u(r.transitionDuration).then(<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>e.parentNode&amp;&amp;e.parentNode.removeChild(e)}</span>)}</span>,k=t.hideAlerts=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>var t=document.getElementsByClassName(r.classes.alert);<span class="cstat-no" title="statement not covered" >i</span>f(t.length){<span class="cstat-no" title="statement not covered" >for(var n=0;n&lt;t.length;n++){<span class="cstat-no" title="statement not covered" >var s=t[n];<span class="cstat-no" title="statement not covered" >L</span>(s.id,s.position)}<span class="cstat-no" title="statement not covered" ></span>e</span>&amp;&amp;u(r.transitionDuration).then(<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return e()}</span>)}</span>}</span>,C=t.alert=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>var t=e.type,n=void 0===t?4:t,s=e.text,a=e.time,i=void 0===a?r.alertTime:a,c=e.stay,o=void 0!==c&amp;&amp;c,l=e.position,d=void 0===l?r.positions.alert||d.top:l;<span class="cstat-no" title="statement not covered" >p</span>(),k();<span class="cstat-no" title="statement not covered" >v</span>ar v=document.createElement("div"),g=f();<span class="cstat-no" title="statement not covered" >v</span>.id=g,v.position=d,v.classList.add(r.classes.textbox),v.classList.add(m[n]),v.classList.add(r.classes.alert),v.innerHTML='&lt;div class="'+r.classes.textboxInner+'"&gt;'+s+"&lt;/div&gt;",v.onclick=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return L(g,d)}</span>,v.listener=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>(b(e)||x(e))&amp;&amp;k()}</span>,y(v,d),i&amp;&amp;i&lt;1&amp;&amp;(i=1),!o&amp;&amp;i&amp;&amp;u(i).then(<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return L(g,d)}</span>)}</span>,E=t.force=<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n=e.type,s=void 0===n?5:n,a=e.text,i=e.buttonText,c=void 0===i?"OK":i,o=e.callback,l=e.position,d=void 0===l?r.positions.force||d.top:l;<span class="cstat-no" title="statement not covered" >p</span>(),k();<span class="cstat-no" title="statement not covered" >v</span>ar u=document.createElement("div"),v=f();<span class="cstat-no" title="statement not covered" >u</span>.id=v;<span class="cstat-no" title="statement not covered" >v</span>ar x=document.createElement("div");<span class="cstat-no" title="statement not covered" >x</span>.classList.add(r.classes.textbox),x.classList.add(r.classes.backgroundInfo),x.innerHTML='&lt;div class="'+r.classes.textboxInner+'"&gt;'+a+"&lt;/div&gt;";<span class="cstat-no" title="statement not covered" >v</span>ar C=document.createElement("div");<span class="cstat-no" title="statement not covered" >C</span>.classList.add(r.classes.button),C.classList.add(m[s]),C.innerHTML=c,C.onclick=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>L(v,d),h(),o?o():t&amp;&amp;t()}</span>,u.appendChild(x),u.appendChild(C),u.listener=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>b(e)&amp;&amp;C.click()}</span>,y(u,d),g()}</span>,T=t.confirm=<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var s=e.text,a=e.submitText,i=void 0===a?"Yes":a,c=e.cancelText,o=void 0===c?"Cancel":c,l=e.submitCallback,d=e.cancelCallback,u=e.position,m=void 0===u?r.positions.confirm||m.top:u;<span class="cstat-no" title="statement not covered" >p</span>(),k();<span class="cstat-no" title="statement not covered" >v</span>ar v=document.createElement("div"),C=f();<span class="cstat-no" title="statement not covered" >v</span>.id=C;<span class="cstat-no" title="statement not covered" >v</span>ar E=document.createElement("div");<span class="cstat-no" title="statement not covered" >E</span>.classList.add(r.classes.textbox),E.classList.add(r.classes.backgroundInfo),E.innerHTML='&lt;div class="'+r.classes.textboxInner+'"&gt;'+s+"&lt;/div&gt;";<span class="cstat-no" title="statement not covered" >v</span>ar T=document.createElement("div");<span class="cstat-no" title="statement not covered" >T</span>.classList.add(r.classes.button),T.classList.add(r.classes.elementHalf),T.classList.add(r.classes.backgroundSuccess),T.innerHTML=i,T.onclick=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>L(C,m),h(),l?l():t&amp;&amp;t()}</span>;<span class="cstat-no" title="statement not covered" >v</span>ar M=document.createElement("div");<span class="cstat-no" title="statement not covered" >M</span>.classList.add(r.classes.button),M.classList.add(r.classes.elementHalf),M.classList.add(r.classes.backgroundError),M.innerHTML=o,M.onclick=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>L(C,m),h(),d?d():n&amp;&amp;n()}</span>,v.appendChild(E),v.appendChild(T),v.appendChild(M),v.listener=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>b(e)?T.click():x(e)&amp;&amp;M.click()}</span>,y(v,m),g(v,m)}</span>,M=<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var i=e.text,c=e.submitText,o=void 0===c?"Submit":c,l=e.cancelText,d=void 0===l?"Cancel":l,u=e.submitCallback,m=e.cancelCallback,v=e.position,C=void 0===v?r.positions.input||C.top:v,E=s(e,["text","submitText","cancelText","submitCallback","cancelCallback","position"]);<span class="cstat-no" title="statement not covered" >p</span>(),k();<span class="cstat-no" title="statement not covered" >v</span>ar T=document.createElement("div"),M=f();<span class="cstat-no" title="statement not covered" >T</span>.id=M;<span class="cstat-no" title="statement not covered" >v</span>ar H=document.createElement("div");<span class="cstat-no" title="statement not covered" >H</span>.classList.add(r.classes.textbox),H.classList.add(r.classes.backgroundInfo),H.innerHTML='&lt;div class="'+r.classes.textboxInner+'"&gt;'+i+"&lt;/div&gt;";<span class="cstat-no" title="statement not covered" >v</span>ar S=document.createElement("input");<span class="cstat-no" title="statement not covered" >S</span>.classList.add(r.classes.inputField),S.setAttribute("autocapitalize",E.autocapitalize||"none"),S.setAttribute("autocomplete",E.autocomplete||"off"),S.setAttribute("autocorrect",E.autocorrect||"off"),S.setAttribute("autofocus",E.autofocus||"true"),S.setAttribute("inputmode",E.inputmode||"verbatim"),S.setAttribute("max",E.max||""),S.setAttribute("maxlength",E.maxlength||""),S.setAttribute("min",E.min||""),S.setAttribute("minlength",E.minlength||""),S.setAttribute("placeholder",E.placeholder||""),S.setAttribute("spellcheck",E.spellcheck||"default"),S.setAttribute("step",E.step||"any"),S.setAttribute("type",E.type||"text"),S.value=E.value||"",E.allowed&amp;&amp;(S.oninput=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>var e=void 0;<span class="cstat-no" title="statement not covered" >i</span>f(Array.isArray(E.allowed)){<span class="cstat-no" title="statement not covered" >for(var t="",n=E.allowed,s=0;s&lt;n.length;s++)<span class="cstat-no" title="statement not covered" >"an"===n[s]?t+="0-9a-zA-Z":"a"===n[s]?t+="a-zA-Z":"n"===n[s]&amp;&amp;(t+="0-9"),"s"===n[s]&amp;&amp;(t+=" ");<span class="cstat-no" title="statement not covered" >e</span></span>=new RegExp("[^"+t+"]","g")}</span>else<span class="cstat-no" title="statement not covered" >"object"===a(E.allowed)&amp;&amp;(e=E.allowed);<span class="cstat-no" title="statement not covered" >S</span></span>.value=S.value.replace(e,"")}</span>);<span class="cstat-no" title="statement not covered" >v</span>ar w=document.createElement("div");<span class="cstat-no" title="statement not covered" >w</span>.classList.add(r.classes.button),w.classList.add(r.classes.elementHalf),w.classList.add(r.classes.backgroundSuccess),w.innerHTML=o,w.onclick=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>L(M,C),h(),u?u(S.value):t&amp;&amp;t(S.value)}</span>;<span class="cstat-no" title="statement not covered" >v</span>ar O=document.createElement("div");<span class="cstat-no" title="statement not covered" >O</span>.classList.add(r.classes.button),O.classList.add(r.classes.elementHalf),O.classList.add(r.classes.backgroundError),O.innerHTML=d,O.onclick=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>L(M,C),h(),m?m(S.value):n&amp;&amp;n(S.value)}</span>,T.appendChild(H),T.appendChild(S),T.appendChild(w),T.appendChild(O),T.listener=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>b(e)?w.click():x(e)&amp;&amp;O.click()}</span>,y(T,C),S.focus(),g(T,C)}</span>;t.input=M;var H=t.select=<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n=e.text,s=e.cancelText,a=void 0===s?"Cancel":s,i=e.cancelCallback,c=e.choices,o=e.position,l=void 0===o?r.positions.select||l.top:o;<span class="cstat-no" title="statement not covered" >p</span>(),k();<span class="cstat-no" title="statement not covered" >v</span>ar d=document.createElement("div"),u=f();<span class="cstat-no" title="statement not covered" >d</span>.id=u;<span class="cstat-no" title="statement not covered" >v</span>ar v=document.createElement("div");<span class="cstat-no" title="statement not covered" >v</span>.classList.add(r.classes.textbox),v.classList.add(r.classes.backgroundInfo),v.innerHTML='&lt;div class="'+r.classes.textboxInner+'"&gt;'+n+"&lt;/div&gt;",d.appendChild(v),c.forEach(<span class="fstat-no" title="function not covered" >function(e,t){<span class="cstat-no" title="statement not covered" ></span>var n=e.type,s=void 0===n?1:n,a=e.text,i=e.handler,o=document.createElement("div");<span class="cstat-no" title="statement not covered" >o</span>.classList.add(m[s]),o.classList.add(r.classes.button),o.classList.add(r.classes.selectChoice);<span class="cstat-no" title="statement not covered" >v</span>ar p=c[t+1];<span class="cstat-no" title="statement not covered" >p</span>&amp;&amp;!p.type&amp;&amp;(p.type=1),p&amp;&amp;p.type===s&amp;&amp;o.classList.add(r.classes.selectChoiceRepeated),o.innerHTML=a,o.onclick=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>L(u,l),h(),i()}</span>,d.appendChild(o)}</span>);<span class="cstat-no" title="statement not covered" >v</span>ar b=document.createElement("div");<span class="cstat-no" title="statement not covered" >b</span>.classList.add(r.classes.backgroundNeutral),b.classList.add(r.classes.button),b.innerHTML=a,b.onclick=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>L(u,l),h(),i?i():t&amp;&amp;t()}</span>,d.appendChild(b),d.listener=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>x(e)&amp;&amp;b.click()}</span>,y(d,l),g(d,l)}</span>,S=t.date=<span class="fstat-no" title="function not covered" >function(e,t,n){<span class="cstat-no" title="statement not covered" ></span>var s=e.value,a=void 0===s?new Date:s,i=e.submitText,c=void 0===i?"OK":i,o=e.cancelText,l=void 0===o?"Cancel":o,d=e.submitCallback,u=e.cancelCallback,m=e.position,v=void 0===m?r.positions.date||v.top:m;<span class="cstat-no" title="statement not covered" >p</span>(),k();<span class="cstat-no" title="statement not covered" >v</span>ar C="&amp;#9662",E=document.createElement("div"),T=document.createElement("div"),M=document.createElement("div"),H=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>E.innerHTML=r.dateMonths[e.getMonth()],T.innerHTML=e.getDate(),M.innerHTML=e.getFullYear()}</span>,S=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>var t=new Date(a.getFullYear(),a.getMonth()+1,0).getDate(),n=e.target.textContent.replace(/^0+/,"").replace(/[^\d]/g,"").slice(0,2);<span class="cstat-no" title="statement not covered" >N</span>umber(n)&gt;t&amp;&amp;(n=t.toString()),e.target.textContent=n,Number(n)&lt;1&amp;&amp;(n="1"),a.setDate(Number(n))}</span>,w=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>var t=e.target.textContent.replace(/^0+/,"").replace(/[^\d]/g,"").slice(0,4);<span class="cstat-no" title="statement not covered" >e</span>.target.textContent=t,a.setFullYear(Number(t))}</span>,O=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>H(a)}</span>,A=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>var t=new Date(a.getFullYear(),a.getMonth()+e+1,0).getDate();<span class="cstat-no" title="statement not covered" >a</span>.getDate()&gt;t&amp;&amp;a.setDate(t),a.setMonth(a.getMonth()+e),H(a)}</span>,D=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>a.setDate(a.getDate()+e),H(a)}</span>,I=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>var t=a.getFullYear()+e;<span class="cstat-no" title="statement not covered" >t</span>&lt;0?a.setFullYear(0):a.setFullYear(a.getFullYear()+e),H(a)}</span>,j=document.createElement("div"),N=f();<span class="cstat-no" title="statement not covered" >j</span>.id=N;<span class="cstat-no" title="statement not covered" >v</span>ar P=document.createElement("div");<span class="cstat-no" title="statement not covered" >P</span>.classList.add(r.classes.backgroundInfo);<span class="cstat-no" title="statement not covered" >v</span>ar F=document.createElement("div");<span class="cstat-no" title="statement not covered" >F</span>.classList.add(r.classes.dateSelectorInner);<span class="cstat-no" title="statement not covered" >v</span>ar Y=document.createElement("div");<span class="cstat-no" title="statement not covered" >Y</span>.classList.add(r.classes.button),Y.classList.add(r.classes.elementThird),Y.classList.add(r.classes.dateSelectorUp),Y.innerHTML=C;<span class="cstat-no" title="statement not covered" >v</span>ar _=document.createElement("div");<span class="cstat-no" title="statement not covered" >_</span>.classList.add(r.classes.button),_.classList.add(r.classes.elementThird),_.classList.add(r.classes.dateSelectorUp),_.innerHTML=C;<span class="cstat-no" title="statement not covered" >v</span>ar z=document.createElement("div");<span class="cstat-no" title="statement not covered" >z</span>.classList.add(r.classes.button),z.classList.add(r.classes.elementThird),z.classList.add(r.classes.dateSelectorUp),z.innerHTML=C,E.classList.add(r.classes.element),E.classList.add(r.classes.elementThird),E.innerHTML=r.dateMonths[a.getMonth()],T.classList.add(r.classes.element),T.classList.add(r.classes.elementThird),T.setAttribute("contentEditable",!0),T.addEventListener("input",S),T.addEventListener("blur",O),T.innerHTML=a.getDate(),M.classList.add(r.classes.element),M.classList.add(r.classes.elementThird),M.setAttribute("contentEditable",!0),M.addEventListener("input",w),M.addEventListener("blur",O),M.innerHTML=a.getFullYear();<span class="cstat-no" title="statement not covered" >v</span>ar U=document.createElement("div");<span class="cstat-no" title="statement not covered" >U</span>.classList.add(r.classes.button),U.classList.add(r.classes.elementThird),U.innerHTML=C;<span class="cstat-no" title="statement not covered" >v</span>ar B=document.createElement("div");<span class="cstat-no" title="statement not covered" >B</span>.classList.add(r.classes.button),B.classList.add(r.classes.elementThird),B.innerHTML=C;<span class="cstat-no" title="statement not covered" >v</span>ar J=document.createElement("div");<span class="cstat-no" title="statement not covered" >J</span>.classList.add(r.classes.button),J.classList.add(r.classes.elementThird),J.innerHTML=C,Y.onclick=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return A(1)}</span>,_.onclick=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return D(1)}</span>,z.onclick=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return I(1)}</span>,U.onclick=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return A(-1)}</span>,B.onclick=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return D(-1)}</span>,J.onclick=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>return I(-1)}</span>;<span class="cstat-no" title="statement not covered" >v</span>ar R=document.createElement("div");<span class="cstat-no" title="statement not covered" >R</span>.classList.add(r.classes.button),R.classList.add(r.classes.elementHalf),R.classList.add(r.classes.backgroundSuccess),R.innerHTML=c,R.onclick=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>L(N,v),h(),d?d(a):t&amp;&amp;t(a)}</span>;<span class="cstat-no" title="statement not covered" >v</span>ar W=document.createElement("div");<span class="cstat-no" title="statement not covered" >W</span>.classList.add(r.classes.button),W.classList.add(r.classes.elementHalf),W.classList.add(r.classes.backgroundError),W.innerHTML=l,W.onclick=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>L(N,v),h(),u?u(a):n&amp;&amp;n(a)}</span>,F.appendChild(Y),F.appendChild(_),F.appendChild(z),F.appendChild(E),F.appendChild(T),F.appendChild(M),F.appendChild(U),F.appendChild(B),F.appendChild(J),P.appendChild(F),j.appendChild(P),j.appendChild(R),j.appendChild(W),j.listener=<span class="fstat-no" title="function not covered" >function(e){<span class="cstat-no" title="statement not covered" ></span>b(e)?R.click():x(e)&amp;&amp;W.click()}</span>,y(j,v),g(j,v)}</span>;t.default={alert:C,force:E,confirm:T,input:M,select:H,date:S,setOptions:l,hideAlerts:k}}])})}).call(t,n(0)(e))}])});
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Wed Apr 19 2017 16:15:02 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
